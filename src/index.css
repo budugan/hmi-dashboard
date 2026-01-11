@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define the Sacalii Brand Colors here */
+:root {
+  --color-teal: #1a4e58;   /* Main Brand Color */
+  --color-gold: #c59b4e;   /* Accents */
+  --color-dark: #2b3035;   /* Text */
+  --color-light: #e3eaed;  /* Backgrounds */
+  --color-red: #c0392b;    /* Errors */
+  --color-bg: #f5f8fa;     /* Page Background */
+  --color-white: #ffffff;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+}
+
+/* --- Reusable Utility Classes --- */
+
+/* Backgrounds */
+.bg-sacalii-teal { background-color: var(--color-teal); }
+.bg-sacalii-gold { background-color: var(--color-gold); }
+.bg-sacalii-red { background-color: var(--color-red); }
+.bg-sacalii-light { background-color: var(--color-light); }
+
+/* Text Colors */
+.text-sacalii-teal { color: var(--color-teal); }
+.text-sacalii-gold { color: var(--color-gold); }
+.text-sacalii-dark { color: var(--color-dark); }
+.text-sacalii-red { color: var(--color-red); }
+
+/* Borders */
+.border-sacalii-teal { border-color: var(--color-teal); }
+.border-sacalii-gold { border-color: var(--color-gold); }
+
+/* Table Styling */
+.lm-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.lm-table th {
+  color: var(--color-white);
+  padding: 12px 16px;
+  font-weight: bold;
+  text-align: left;
+}
+.lm-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.lm-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* Custom Component Styles */
+.header-angle-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 33%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: skewX(-12deg);
+  transform-origin: bottom right;
+}
