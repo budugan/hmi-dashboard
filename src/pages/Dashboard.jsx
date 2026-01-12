@@ -6,16 +6,12 @@ import { successRateData, downtimeData, errorFreqData, CHART_COLORS } from '../d
 const Dashboard = () => {
   return (
     <Layout title="Dashboard & Analytics">
-      <div className="flex gap-4 text-sm text-gray-500 mb-8">
-        <span className="text-sacalii-teal font-bold border-b-2 border-sacalii-teal pb-1">Dashboard</span>
-        <span>Real time status</span>
-        <span>Errors and notifications</span>
-        <span>Employees</span>
-      </div>
+      
+      {/* Removed the text navigation bar here. The page now starts directly with the charts. */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-4">
         
-        {/* Success Rate */}
+        {/* Chart 1: Success Rate (Left Column) */}
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
             <h3 className="text-sacalii-teal font-bold mb-4">Quality assurance Success Rate</h3>
             <ResponsiveContainer width="100%" height={300}>
@@ -23,17 +19,18 @@ const Dashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="name" tickLine={false} />
                 <YAxis axisLine={false} tickLine={false} domain={[0, 200]} ticks={[0, 40, 80, 120, 160, 200]}/>
-                <Tooltip />
+                <Tooltip cursor={{fill: 'transparent'}} />
                 <Legend verticalAlign="top" align="center" iconType="rect" height={36}/>
-                {/* Using constants mapped to our colors */}
                 <Bar dataKey="Normal" stackId="a" fill={CHART_COLORS.teal} name="Normal chess boards" barSize={50} />
                 <Bar dataKey="Premium" stackId="a" fill={CHART_COLORS.gold} name="Premium chess boards" barSize={50} />
                 </BarChart>
             </ResponsiveContainer>
         </div>
 
+        {/* Right Column: Downtime & Error Frequency */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-             {/* Downtime Area Chart */}
+             
+             {/* Chart 2: Downtime Area Chart */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                 <h3 className="text-sacalii-teal font-bold mb-4">Downtime percentage</h3>
                 <div className="text-xs text-gray-500 text-right mb-2">Downtime (minutes)</div>
@@ -48,7 +45,7 @@ const Dashboard = () => {
                 </ResponsiveContainer>
             </div>
 
-             {/* Error Frequency Donut */}
+             {/* Chart 3: Error Frequency Donut Chart */}
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center">
                 <h3 className="text-sacalii-teal font-bold mb-4 self-start">Error frequency</h3>
                 <ResponsiveContainer width="100%" height={250}>
