@@ -1,5 +1,8 @@
+// src/components/Layout.jsx
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { LogOut, User } from 'lucide-react'; // Icons
+import { useAuth } from '../AuthContext'; // Import context
 
 const NavLink = ({ to, children, currentPath }) => {
     const isActive = currentPath === to;
@@ -12,14 +15,19 @@ const NavLink = ({ to, children, currentPath }) => {
 
 const Layout = ({ children, title }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+    const { user, logout } = useAuth(); // Get user and logout function
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
 
     return (
         <div className="min-h-screen flex flex-col font-sans text-gray-800 bg-sacalii-bg">
-            {/* Top decorative bars using utility classes */}
             <div className="h-2 bg-sacalii-teal"></div>
             <div className="h-2 bg-sacalii-gold mb-4"></div>
 
-            {/* Main Header */}
             <header className="bg-sacalii-teal text-white p-4 flex justify-between items-center shadow-md relative overflow-hidden" style={{minHeight: '130px'}}>
                 <h1 className="text-3xl font-bold uppercase tracking-wider z-10 text-white">{title}</h1>
 
@@ -30,9 +38,26 @@ const Layout = ({ children, title }) => {
                     <NavLink to="/errors" currentPath={location.pathname}>Errors & Personnel</NavLink>
                 </nav>
 
-                <div className="z-10 relative right-0 flex items-center h-full">
+                {/* Right Side: Logo & User Info */}
+                <div className="z-10 relative right-0 flex items-center h-full gap-6">
+                    
+                    {/* User Profile & Logout Section */}
+                    <div className="flex flex-col items-end mr-4">
+                        <div className="flex items-center gap-2 text-sacalii-gold font-bold mb-1">
+                            <User size={18} />
+                            <span>{user || 'Guest'}</span>
+                        </div>
+                        <button 
+                            onClick={handleLogout}
+                            className="flex items-center gap-1 text-xs text-blue-200 hover:text-white transition-colors"
+                        >
+                            <LogOut size={14} />
+                            LOGOUT
+                        </button>
+                    </div>
+
                     <img 
-                        src="logo-final.png" 
+                        src="/logo-final.png" 
                         alt="Sacalii Limited Logo" 
                         className="h-28 w-auto rounded-lg border-2 border-sacalii-gold shadow-lg bg-white object-contain"
                     />
