@@ -1,7 +1,7 @@
 export const errorLogs = [
-    { id: 1, description: "Robot overload", timestamp: "24.10.2024 11:59", severity: "WARNING" },
-    { id: 2, description: "Conveyor automatic selector failure", timestamp: "01.11.2024 15:37", severity: "ERROR" },
-    { id: 3, description: "Wrapping material missing", timestamp: "01.11.2024 16:03", severity: "ERROR" },
+    { id: 1, description: "Robot overload", timestamp: "24.10.2025 11:59", severity: "WARNING" },
+    { id: 2, description: "Conveyor automatic selector failure", timestamp: "01.11.2025 15:37", severity: "ERROR" },
+    { id: 3, description: "Wrapping material missing", timestamp: "01.11.2025 16:03", severity: "ERROR" },
 ];
 
 export const personnel = [
